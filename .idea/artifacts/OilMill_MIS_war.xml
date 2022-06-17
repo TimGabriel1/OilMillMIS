@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="OilMill_MIS:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>OilMill_MIS</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="OilMill_MIS-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="OilMill_MIS:war exploded" />
+    </root>
+  </artifact>
+</component>

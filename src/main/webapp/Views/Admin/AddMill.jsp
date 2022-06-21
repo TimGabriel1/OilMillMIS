@@ -55,7 +55,7 @@
 
                         } catch (Exception ex) {
                             ex.printStackTrace();
-                            System.out.println("Error" + ex.getMessage());
+                          out.println("Error" + ex.getMessage());
                         }
                     %>
                 </select>
@@ -179,7 +179,7 @@
             <div class="col">
                 <label class="col-form-label col-form-label-lg" for="palm_oil_can">Fiber Oil (Can)</label>
                 <input id="fibre_oil_can" type="number" name="fibre_oil_can" value=""
-                       class="form-control"  min="0" step="1"><br>
+                       class="form-control"  min="0" step=".01"><br>
             </div>
 
         </div>

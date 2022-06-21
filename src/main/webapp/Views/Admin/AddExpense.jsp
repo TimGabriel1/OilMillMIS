@@ -29,7 +29,7 @@
                     <option value="FIELD_CUTTING">Field Cutting</option>
                     <option value="BUSH_CUTTING">Bush Cutting</option>
                     <option value="PALM_PRUNING">Palm Pruning</option>
-                    <option value="HARVEST_COST">Harvest Cost</option>
+                    <option value="FRUIT_CUTTING">Fruit Cutting</option>
                     <option value="HONORARIUM">Honorarium</option>
                     <option value="OTHERS_PR">Others/PR</option>
                 </select>
@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col">
                 <label for="remark" class="col-form-label-lg">Remarks</label>
-                <textarea id="remark" name="remark" value="${expense.remark}" class="form-control" required="true"
+                <textarea id="remark" name="remark" value="${expense.remark}" class="form-control"
                           min="0" col></textarea>
 
             </div>
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col">
                 <label class="col-form-label-lg" for="logger">Expense Logged By:</label>
-                <input type="text" id="logger" name="logger" value="<%out.print(getUserName());%>"
+                <input type="text" id="logger" name="logger" value="${loggedIn.fullName}"
                        placeholder="logger name" class="form-control" disabled/>
 
             </div>

@@ -4,7 +4,7 @@ public enum ExpenseCategory {
     FIELD_CUTTING,
     BUSH_CUTTING,
     PALM_PRUNING,
-    HARVEST_COST,
+    FRUIT_CUTTING,
     HONORARIUM,
     OTHERS_PR
 

@@ -49,7 +49,7 @@
 
 
     </table>
-    <button class="btn btn-primary pull-right" onclick="window.location.href = 'sales?expenses=NEW'">Make Sales</button>
+    <button class="btn btn-primary pull-right" onclick="window.location.href = 'expenses?action=NEW'">Record Harvest Expenses</button>
     <%--    <button class="btn btn-primary pull-left " onclick="window.location.href = 'incomees?action=ADDBATCH'"></button>--%>
     <div>
         <p> ${message} </p>

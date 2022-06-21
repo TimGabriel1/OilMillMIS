@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class ChangePassword extends HttpServlet {
     UserDAO userDAO = null;
     RequestDispatcher dispatcher = null;
-    private ChartsDAO chartsDAO;
+    private final ChartsDAO chartsDAO;
 
     public ChangePassword() {
         userDAO = new UserDAOImpl();
@@ -82,14 +82,14 @@ String oldPassword = user.getPassword();
         try {
             List<User> list = userDAO.get();
             DashboardUtil util = new DashboardUtil();
-            util.setUnMilledBatches(chartsDAO.getUnmilledBatches());
+            util.setUnmilledBatches(chartsDAO.getUnmilledBatches());
             util.setMilledBatches(chartsDAO.getMilledBatches());
             LocalDate today = LocalDate.now(ZoneId.systemDefault());
             util.setMonth(today.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH));
             String incomeCostPlot = chartsDAO.getIncomeCostPlot();
             String incomeDatePlot = chartsDAO.getIncomeDatePlot();
             String expenseCategoryPlot = chartsDAO.getExpenseCategoryCost();
-            String harvestAndStockPlot = chartsDAO.getHarvestandStockPlot();
+            String harvestAndStockPlot = chartsDAO.getHarvestAndStockPlot();
             request.setAttribute("list", list);
             request.setAttribute("util", util);
            request.setAttribute("incomeCostPlot", incomeCostPlot);

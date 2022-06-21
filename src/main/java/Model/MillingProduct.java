@@ -4,7 +4,7 @@ public class MillingProduct {
     private int id;
     private int palmOilDrum;
     private int palmOilCan;
-    private int fibreOilCan;
+    private Double fibreOilCan;
 
     public int getId() {
         return id;
@@ -30,11 +30,11 @@ public class MillingProduct {
         this.palmOilCan = palmOilCan;
     }
 
-    public int getFibreOilCan() {
+    public double getFibreOilCan() {
         return fibreOilCan;
     }
 
-    public void setFibreOilCan(int fibreOilCan) {
+    public void setFibreOilCan(double fibreOilCan) {
         this.fibreOilCan = fibreOilCan;
     }
 
@@ -49,5 +49,10 @@ public class MillingProduct {
                 ", palmOilCan=" + palmOilCan +
                 ", fibreOilCan=" + fibreOilCan +
                 '}';
+    }
+
+    public Double getStockRemaining() {
+        return this.palmOilCan + this.fibreOilCan + this.palmOilDrum;
+
     }
 }

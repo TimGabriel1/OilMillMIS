@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.*;
 import Model.Batch;
+import Model.MillingProduct;
 import Model.StockItem;
 import Model.User;
 
@@ -29,10 +30,13 @@ public class StockController extends HttpServlet {
     StockItemDAO stockItemDAO;
     private RequestDispatcher dispatcher;
 
+    MillingProductDAO millingProductDAO;
+
     public StockController() {
         batchDAO = new BatchDAOImpl();
         userDAO = new UserDAOImpl();
         stockItemDAO = new StockItemDAOImpl();
+        millingProductDAO = new MillingProductDAOImpl();
     }
 
     @Override
@@ -47,7 +51,7 @@ public class StockController extends HttpServlet {
                 listStock(request, response);
                 break;
 
-            case "ADD":
+            case "NEW":
                 newStock(request, response);
                 break;
             case "DELETE":
@@ -99,7 +103,8 @@ public class StockController extends HttpServlet {
     public void listStock(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             List<StockItem> list = stockItemDAO.get();
-
+            MillingProduct millingProduct = millingProductDAO.get();
+            request.setAttribute("prod", millingProduct);
             request.setAttribute("list", list);
             request.setAttribute("title", "Stock List");
             dispatcher = request.getRequestDispatcher("/Views/Admin/Stock.jsp");

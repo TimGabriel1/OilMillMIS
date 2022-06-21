@@ -30,6 +30,7 @@
             <th>Received By</th>
             <th>Income Type</th>
             <th>Product Unit</th>
+            <th>Quantity Sold</th>
             <th>Amount (Naira)</th>
             <th>Received From</th>
             <th>Remark</th>
@@ -45,6 +46,7 @@
                 <td>${income.logger.fullName}</td>
                 <td>${income.incomeType}</td>
                 <td>${income.productUnit}</td>
+                <td>${income.qty}</td>
                 <td><fmt:formatNumber value = "${income.amount}" type = "currency"/>
                 </td>
                 <td>${income.receivedFrom}</td>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: mac
@@ -65,10 +66,65 @@
                     </div>
                 </div>
             </div><!-- row -->
+            <div class="row row-xs">
+                <fmt:setLocale value="en_NG"/>
+                <div class="col">
+                    <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-primary-light">
+                        <h1 class="tx-light tx-sans tx-spacing--4 tx-primary mg-b-5"><fmt:formatNumber value = "${util.totalIncome}" type = "currency"/></h1>
+                        <p class="tx-13 tx-lg-14 tx-color-02 mg-b-0">Total Income</p>
+                    </div>
+                </div>
+                <div class="col">
+
+                        <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-teal-light">
+                 <h1 class="mg-b-5 tx-sans tx-spacing--2 tx-light tx-pink"><fmt:formatNumber value = "${util.totalHarvestStockCost}" type = "currency"/></h1>
+                        <p class="tx-13 tx-lg-14 tx-color-03 mg-b-0">Total Harvest Stock Cost</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-pink-light">
+                 <h1 class="mg-b-5 tx-sans tx-spacing--2 tx-light tx-pink">${stockRemaining}</h1>
+                        <p class="tx-13 tx-lg-14 tx-color-03 mg-b-0">Total Stock left</p>
+                    </div>
+                </div>
+            </div><!-- row -->          <div class="row row-xs">
+                <fmt:setLocale value="en_NG"/>
+            <div class="col">
+                <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-primary-light">
+                    <h1 class="tx-light tx-sans tx-spacing--4 tx-primary mg-b-5"><fmt:formatNumber value = "${util.totalExpenses}" type = "currency"/></h1>
+                    <p class="tx-13 tx-lg-14 tx-color-02 mg-b-0">Total Expenses (excluding harvest stock purchase)</p>
+                </div>
+            </div>
+                <div class="col">
+
+                        <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-teal-light">
+                 <h1 class="mg-b-5 tx-sans tx-spacing--2 tx-light tx-pink"><fmt:formatNumber value = "${util.profitOrLoss}" type = "currency"/></h1>
+                        <p class="tx-13 tx-lg-14 tx-color-03 mg-b-0">Profit / Loss</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-pink-light">
+                 <h1 class="mg-b-5 tx-sans tx-spacing--2 tx-light tx-pink"><fmt:formatNumber value = "${util.profitMargin}" type = "percent"/></h1>
+                        <p class="tx-13 tx-lg-14 tx-color-03 mg-b-0">Profit Marin</p>
+                    </div>
+                </div>
+            </div><!-- row -->
         </div><!-- stat-profile-body -->
     </div><!-- stat-profile -->
     <div class="row">
         <div class="col">
+            <label class="chart-label col-form-label-lg" for="expenseCategoryPlot">Expense vs Category</label>
+            <canvas class="col" id="expenseCategoryPlot"></canvas>
+        </div>
+        <div class="col">
+            <label class="chart-label col-form-label-lg" for="harvestAndStock">Batches vs Harvest Stock</label>
+
+            <canvas class="col" id="harvestAndStock"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
             <canvas class="col" id="incomeVsSource"></canvas>
         </div>
 
@@ -77,14 +133,7 @@
             <canvas class="col" id="chart2"></canvas>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <canvas class="col" id="expenseCategoryPlot"></canvas>
-        </div>
-        <div class="col">
-        <canvas class="col" id="harvestAndStock">Another Canvas</canvas>
-    </div>
-    </div>
+
 
     <script>
         let jsonfile =
@@ -96,7 +145,7 @@
         const data = jsonfile.map(function (e) {
             return e.y;
         });
-        ;
+
         const ctx = document.getElementById('incomeVsSource').getContext('2d');
         const config = {
             type: 'line',
@@ -122,7 +171,7 @@
         const data2 = jsonfile2.map(function (e) {
             return e.y;
         });
-        ;
+
         const ctx2 = document.getElementById('chart2').getContext('2d');
         const config2 = {
             type: 'line',

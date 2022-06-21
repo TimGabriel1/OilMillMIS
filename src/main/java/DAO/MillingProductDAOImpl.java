@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MillingProductDAOImpl implements MillingProductDAO{
-
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
@@ -27,7 +26,7 @@ public class MillingProductDAOImpl implements MillingProductDAO{
             resultSet = statement.executeQuery(sql);
             millingProduct = new MillingProduct();
             while (resultSet.next()) {
-                millingProduct.setFibreOilCan(resultSet.getInt("fibreOilCan"));
+                millingProduct.setFibreOilCan(resultSet.getDouble("fibreOilCan"));
                 millingProduct.setPalmOilDrum(resultSet.getInt("palmOilDrum"));
                 millingProduct.setPalmOilCan(resultSet.getInt("palmOilCan"));
             }
@@ -43,11 +42,60 @@ public class MillingProductDAOImpl implements MillingProductDAO{
     @Override
     public Boolean update(MillingProduct millingProduct) {
         boolean flag = false;
-
-
         try {
             String sql = "update millingProduct set fibreOilCan = fibreOilCan +"+ millingProduct.getFibreOilCan() +
                     ", palmOilDrum = palmOilDrum +"+ millingProduct.getPalmOilDrum() +", palMOilCan = palmOilCan + "+ millingProduct.getPalmOilCan()  + " where id= 1";
+            connection = DBConnectionUtil.openConnection();
+            preparedStmt = connection.prepareStatement(sql);
+            preparedStmt.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BatchDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean sellFibreOilCan(double number) {
+        boolean flag = false;
+        try {
+            String sql = "update millingProduct set fibreOilCan = fibreOilCan -"+ number+ " where id= 1";
+            connection = DBConnectionUtil.openConnection();
+            preparedStmt = connection.prepareStatement(sql);
+            preparedStmt.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BatchDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean sellPalmOilDrum(int number) {
+        boolean flag = false;
+        try {
+            String sql = "update millingProduct set palmOilDrum = palmOilDrum -"+ number+ " where id= 1";
+            connection = DBConnectionUtil.openConnection();
+            preparedStmt = connection.prepareStatement(sql);
+            preparedStmt.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BatchDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean sellPalmOilCan(int number) {
+        boolean flag = false;
+        try {
+            String sql = "update millingProduct set palmOilCan = palmOilCan -"+ number+ " where id= 1";
             connection = DBConnectionUtil.openConnection();
             preparedStmt = connection.prepareStatement(sql);
             preparedStmt.executeUpdate();

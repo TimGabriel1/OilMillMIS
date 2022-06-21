@@ -12,6 +12,8 @@ public class Income {
 
     private ProductUnit productUnit;
 
+    private int qty;
+
     private String remark;
 
     public Income() {
@@ -81,6 +83,15 @@ public class Income {
         this.productUnit = productUnit;
     }
 
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
     @Override
     public String toString() {
         return "Income{" +
@@ -91,6 +102,7 @@ public class Income {
                 ", logger=" + logger +
                 ", date=" + date +
                 ", productUnit=" + productUnit +
+                ", qty=" + qty +
                 ", remark='" + remark + '\'' +
                 '}';
     }

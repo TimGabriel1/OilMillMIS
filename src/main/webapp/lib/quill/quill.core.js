@@ -626,7 +626,7 @@
                             var otherOp = otherIter.next(length);
                             if (thisOp['delete']) {
                                 // Our delete either makes their delete redundant or removes their retain
-                                continue;
+
                             } else if (otherOp['delete']) {
                                 delta.push(otherOp);
                             } else {
@@ -3984,7 +3984,7 @@
                                     _this.insertBefore(child, _this.children.head || undefined);
                                 } catch (err) {
                                     if (err instanceof Registry.ParchmentError)
-                                        return;
+
                                     else
                                         throw err;
                                 }
@@ -4431,7 +4431,7 @@
                     this.ops = ops;
                     this.index = 0;
                     this.offset = 0;
-                };
+                }
 
                 Iterator.prototype.hasNext = function () {
                     return this.peekLength() < Infinity;
@@ -7991,7 +7991,7 @@
                     };
                     BlockBlot.prototype.format = function (name, value) {
                         if (Registry.query(name, Registry.Scope.BLOCK) == null) {
-                            return;
+
                         } else if (name === this.statics.blotName && !value) {
                             this.replaceWith(BlockBlot.blotName);
                         } else {
@@ -8367,7 +8367,7 @@
                     }
                     diffs = fix_emoji(diffs);
                     return diffs;
-                };
+                }
 
 
                 /**
@@ -8428,7 +8428,7 @@
                     }
 
                     return diff_bisect_(text1, text2);
-                };
+                }
 
 
                 /**
@@ -8544,7 +8544,7 @@
                     // Diff took too long and hit the deadline or
                     // number of diffs equals number of characters, no commonality at all.
                     return [[DIFF_DELETE, text1], [DIFF_INSERT, text2]];
-                };
+                }
 
 
                 /**
@@ -8567,7 +8567,7 @@
                     var diffsb = diff_main(text1b, text2b);
 
                     return diffs.concat(diffsb);
-                };
+                }
 
 
                 /**
@@ -8599,7 +8599,7 @@
                         pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
                     }
                     return pointermid;
-                };
+                }
 
 
                 /**
@@ -8631,7 +8631,7 @@
                         pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
                     }
                     return pointermid;
-                };
+                }
 
 
                 /**
@@ -8724,7 +8724,7 @@
                     }
                     var mid_common = hm[4];
                     return [text1_a, text1_b, text2_a, text2_b, mid_common];
-                };
+                }
 
 
                 /**
@@ -8851,7 +8851,7 @@
                     if (changes) {
                         diff_cleanupMerge(diffs);
                     }
-                };
+                }
 
 
                 var diff = diff_main;
@@ -9053,7 +9053,7 @@
 
                 function supported(object) {
                     return Object.prototype.toString.call(object) == '[object Arguments]';
-                };
+                }
 
                 exports.unsupported = unsupported;
 
@@ -9064,7 +9064,7 @@
                         Object.prototype.hasOwnProperty.call(object, 'callee') &&
                         !Object.prototype.propertyIsEnumerable.call(object, 'callee') ||
                         false;
-                };
+                }
 
 
                 /***/

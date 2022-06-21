@@ -25,9 +25,9 @@ import java.util.logging.Logger;
 public class UserController extends HttpServlet {
     UserDAO userDAO = null;
     RequestDispatcher dispatcher = null;
-    private ChartsDAO chartsDAO;
+    private final ChartsDAO chartsDAO;
 
-    private MillingProductDAO millingProductDAO;
+    private final MillingProductDAO millingProductDAO;
 
     public UserController() {
         userDAO = new UserDAOImpl();
@@ -103,23 +103,27 @@ public class UserController extends HttpServlet {
         try {
             List<User> list = userDAO.get();
             DashboardUtil util = new DashboardUtil();
-            util.setUnMilledBatches(chartsDAO.getUnmilledBatches());
+            util.setUnmilledBatches(chartsDAO.getUnmilledBatches());
             util.setMilledBatches(chartsDAO.getMilledBatches());
+            util.setTotalHarvestStockCost(chartsDAO.getTotalHarvestStockCost());
+            util.setTotalIncome(chartsDAO.getTotalIncome());
+            util.setTotalExpenses(chartsDAO.getTotalExpenses());
             LocalDate today = LocalDate.now(ZoneId.systemDefault());
             util.setMonth(today.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH));
             String incomeCostPlot = chartsDAO.getIncomeCostPlot();
             String incomeDatePlot = chartsDAO.getIncomeDatePlot();
             String expenseCategoryPlot = chartsDAO.getExpenseCategoryCost();
-            String harvestAndStockPlot = chartsDAO.getHarvestandStockPlot();
+            String harvestAndStockPlot = chartsDAO.getHarvestAndStockPlot();
             MillingProduct millingProduct = millingProductDAO.get();
             request.setAttribute("list", list);
             request.setAttribute("util", util);
            request.setAttribute("incomeCostPlot", incomeCostPlot);
+           request.setAttribute("stockRemaining", millingProduct.getStockRemaining());
            request.setAttribute("incomeDatePlot", incomeDatePlot);
            request.setAttribute("expenseCategoryPlot", expenseCategoryPlot);
            request.setAttribute("harvestAndStock", harvestAndStockPlot);
            request.setAttribute("millingProduct", millingProduct);
-
+            System.out.println("Util: " + util);
             request.setAttribute("title", "Admin Dashboard");
             dispatcher = request.getRequestDispatcher("/Views/Admin/dashboard.jsp");
             dispatcher.forward(request, response);

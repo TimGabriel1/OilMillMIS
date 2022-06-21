@@ -48,7 +48,7 @@ public class MillDAOImpl implements MillDAO {
         mill.setId(resultSet.getInt("id"));
         mill.setBatch(new BatchDAOImpl().get(resultSet.getInt("batch")));
         mill.setHarvestStock(resultSet.getInt("harvestStock"));
-        mill.setNumberOfPresses(resultSet.getInt("numberOfPresses"));
+        mill.setNumberOfPresses(resultSet.getDouble("numberOfPresses"));
         mill.setMillingDate(resultSet.getDate("millingDate"));
         mill.setLogger(new UserDAOImpl().get(resultSet.getInt("logger")));
 

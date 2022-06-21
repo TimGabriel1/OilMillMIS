@@ -7,7 +7,7 @@ public class Mill {
     private Batch batch;
     private Integer harvestStock;
 
-    private Integer numberOfPresses;
+    private Double numberOfPresses;
     private Date millingDate;
     private User logger;
 
@@ -42,11 +42,11 @@ public class Mill {
     }
 
 
-    public Integer getNumberOfPresses() {
+    public Double getNumberOfPresses() {
         return numberOfPresses;
     }
 
-    public void setNumberOfPresses(Integer numberOfPresses) {
+    public void setNumberOfPresses(Double numberOfPresses) {
         this.numberOfPresses = numberOfPresses;
     }
 

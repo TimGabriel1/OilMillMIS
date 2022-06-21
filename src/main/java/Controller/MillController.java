@@ -89,7 +89,7 @@ public class MillController extends HttpServlet {
         mill.setLogger(logger);
         mill.setBatch(harvest.getBatch());
         mill.setHarvestStock(harvest.getStockInBunches());
-        mill.setNumberOfPresses(Integer.valueOf(numberOfPresses));
+        mill.setNumberOfPresses(Double.valueOf(numberOfPresses));
         mill.setMillingDate(Date.valueOf(millingDate));
 
 
@@ -107,7 +107,7 @@ public class MillController extends HttpServlet {
 
         Integer palmOilDrum = Integer.valueOf(request.getParameter("palm_oil_drum"));
         Integer palmOilCan = Integer.valueOf(request.getParameter("palm_oil_can"));
-        Integer fibreOilCan = Integer.valueOf(request.getParameter("fibre_oil_can"));
+        double fibreOilCan = Double.valueOf(request.getParameter("fibre_oil_can"));
 
         millingProduct.setPalmOilCan(palmOilCan);
         millingProduct.setPalmOilDrum(palmOilDrum);

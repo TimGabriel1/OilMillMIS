@@ -9,7 +9,21 @@ public interface ChartsDAO {
     String getIncomeCostPlot();
     String getIncomeDatePlot();
     String getExpenseCategoryCost();
-    String getHarvestandStockPlot();
+    String getHarvestAndStockPlot();
+    Double getTotalIncome();
+    Double getTotalHarvestStockCost();
+    Double getTotalExpenseAmount();
+    Double getTotalOtherCosts();
+    Double getTotalHonorarium();
+    Double getTotalFuel();
+    Double getTotalStorage();
+    Double getTotalAdhoc();
+    Double getTotalFirewood();
+    Double getTotalPlantParts();
+    Double getTotalExpenses();
+
+
+
 
 
 

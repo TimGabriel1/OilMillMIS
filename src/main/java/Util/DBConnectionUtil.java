@@ -6,12 +6,13 @@ import java.sql.SQLException;
 
 public class DBConnectionUtil {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/oilmill_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String URL = "jdbc:mysql://localhost:3306/oilmill_db?autoReconnect=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
 //    private static final String USERNAME = "oiladmin";
 //    private static final String PASSWORD = "%261057%";
-    private static final String PASSWORD = "";
+//
 
     private static Connection con = null;
 

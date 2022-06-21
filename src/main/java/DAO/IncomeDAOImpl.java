@@ -41,6 +41,7 @@ public class IncomeDAOImpl implements IncomeDAO {
                 income.setDate(resultSet.getDate("incomeDAte"));
                 income.setRemark(resultSet.getString("remark"));
                 income.setProductUnit(ProductUnit.valueOf(resultSet.getString("unit")));
+                income.setQty(resultSet.getInt("qty"));
 
 
                 list.add(income);
@@ -62,8 +63,8 @@ public class IncomeDAOImpl implements IncomeDAO {
         System.out.println("Income at DAO " + income);
         try {
 
-            String sql = "insert into income(incomeType, amount, receivedFrom, logger, incomeDate, remark, unit) "
-                    + "values(?,?,?,?,?,?,?)";
+            String sql = "insert into income(incomeType, amount, receivedFrom, logger, incomeDate, remark, unit,qty) "
+                    + "values(?,?,?,?,?,?,?,?)";
             try {
                 connection = DBConnectionUtil.openConnection();
             } catch (ClassNotFoundException ex) {
@@ -77,6 +78,7 @@ public class IncomeDAOImpl implements IncomeDAO {
             preparedStmt.setString(5, String.valueOf(income.getDate()));
             preparedStmt.setString(6, income.getRemark());
             preparedStmt.setString(7, String.valueOf(income.getProductUnit()));
+            preparedStmt.setInt(8, income.getQty());
             preparedStmt.executeUpdate();
             flag = true;
 
@@ -105,6 +107,7 @@ public class IncomeDAOImpl implements IncomeDAO {
                 income.setDate(resultSet.getDate("incomeDAte"));
                 income.setRemark(resultSet.getString("remark"));
                 income.setProductUnit(ProductUnit.valueOf(resultSet.getString("unit")));
+                income.setQty(resultSet.getInt("qty"));
 
 
             }
@@ -124,7 +127,7 @@ public class IncomeDAOImpl implements IncomeDAO {
         boolean flag = false;
 
         try {
-            String sql = "update income set incomeType='" + income.getIncomeType() + "',amount=" + income.getAmount() + ",receivedFrom='" + income.getReceivedFrom() + "',logger =" + income.getLogger().getId() + ", incomeDAte='" + income.getDate() + "', remark='" + income.getRemark() + "', unit=" + income.getProductUnit() + "' where id=" + income.getId();
+            String sql = "update income set incomeType='" + income.getIncomeType() + "',amount=" + income.getAmount() + ",receivedFrom='" + income.getReceivedFrom() + "',logger =" + income.getLogger().getId() + ", incomeDAte='" + income.getDate() + "', remark='" + income.getRemark() + "', unit='" + income.getProductUnit() + "', qty = "+ income.getQty()+  " where id=" + income.getId();
             connection = DBConnectionUtil.openConnection();
             preparedStmt = connection.prepareStatement(sql);
             preparedStmt.executeUpdate();

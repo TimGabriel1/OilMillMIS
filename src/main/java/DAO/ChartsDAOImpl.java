@@ -19,7 +19,7 @@ public class ChartsDAOImpl implements  ChartsDAO {
     private Statement statement;
     private ResultSet resultSet;
 
-    private BatchDAO batchDAO;
+    private final BatchDAO batchDAO;
 
     public ChartsDAOImpl() {
         batchDAO = new BatchDAOImpl();
@@ -176,7 +176,7 @@ public class ChartsDAOImpl implements  ChartsDAO {
         return dataPoints;
     }
     @Override
-    public String getHarvestandStockPlot() {
+    public String getHarvestAndStockPlot() {
         Map<Object, Object> map = null;
         List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
         String dataPoints = null;
@@ -207,5 +207,240 @@ public class ChartsDAOImpl implements  ChartsDAO {
             throw new RuntimeException(e);
         }
         return dataPoints;
+    }
+
+    @Override
+    public Double getTotalIncome() {
+
+        Double val = null;
+        String sql = "SELECT  SUM(amount) as sum " +
+                "FROM income " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalHarvestStockCost() {
+        Double val = null;
+        String sql = "SELECT  SUM(harvestStockCost) as sum " +
+                "FROM millingExpense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalExpenseAmount() {
+        Double val = null;
+        String sql = "SELECT  SUM(amount) as sum " +
+                "FROM expense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalOtherCosts() {
+        Double val = null;
+        String sql = "SELECT  SUM(otherCosts) as sum " +
+                "FROM harvest " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalHonorarium() {
+        Double val = null;
+        String sql = "SELECT  SUM(honorarium) as sum " +
+                "FROM harvest " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalFuel() {
+        Double val = null;
+        String sql = "SELECT  SUM(fuel) as sum " +
+                "FROM millingExpense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalStorage() {
+        Double val = null;
+        String sql = "SELECT  SUM(storage) as sum " +
+                "FROM millingExpense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalAdhoc() {
+        Double val = null;
+        String sql = "SELECT  SUM(adhocLabour) as sum " +
+                "FROM millingExpense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalFirewood() {
+        Double val = null;
+        String sql = "SELECT  SUM(firewood) as sum " +
+                "FROM millingExpense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    @Override
+    public Double getTotalPlantParts() {
+        Double val = null;
+        String sql = "SELECT  SUM(plantParts) as sum " +
+                "FROM millingExpense " ;
+
+        try {
+            connection = DBConnectionUtil.openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                val = (resultSet.getDouble("sum"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return val;
+    }
+
+    public Double getTotalExpenses(){
+       return(getTotalExpenseAmount()  + getTotalOtherCosts() + getTotalHonorarium() + getTotalFuel()  + getTotalStorage() +getTotalAdhoc() + getTotalFirewood() + getTotalPlantParts());
     }
 }

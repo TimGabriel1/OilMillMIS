@@ -60,7 +60,7 @@
 
             <div class="col">
                 <label class="col-form-label col-form-label-lg" for="logger">Harvest Logged By:</label>
-                <input type="text" id="logger" name="logger" value="<%out.print(getUserName());%>"
+                <input type="text" id="logger" name="logger" value="${loggedIn.fullName}"
                        placeholder="logger name" class="form-control" disabled/>
             </div>
         </div>
@@ -79,7 +79,7 @@
             <div class="col">
                 <label class="col-form-label col-form-label-lg" for="otherCosts">Other Costs</label>
                 <input type="number" id="otherCosts" name="otherCosts" value="${harvest.otherCosts}"
-                       class="form-control" required="true" min="0" step=".01"/>
+                       class="form-control"  min="0" step=".01"/>
             </div>
             <div class="col">
                 <label class="col-form-label col-form-label-lg" for="honorarium">Honorarium</label>

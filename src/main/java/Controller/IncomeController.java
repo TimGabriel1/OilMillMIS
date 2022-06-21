@@ -1,9 +1,6 @@
 package Controller;
 
-import DAO.IncomeDAO;
-import DAO.IncomeDAOImpl;
-import DAO.UserDAO;
-import DAO.UserDAOImpl;
+import DAO.*;
 import Model.Income;
 import Model.IncomeType;
 import Model.ProductUnit;
@@ -26,11 +23,14 @@ import java.util.logging.Logger;
 public class IncomeController extends HttpServlet {
     private final UserDAO userDAO;
     IncomeDAO incomeDAO;
+
+    MillingProductDAO millingProductDAO;
     private RequestDispatcher dispatcher;
 
     public IncomeController() {
         incomeDAO = new IncomeDAOImpl();
         userDAO = new UserDAOImpl();
+        millingProductDAO = new MillingProductDAOImpl();
     }
 
     @Override
@@ -68,6 +68,7 @@ public class IncomeController extends HttpServlet {
         String receivedFrom = request.getParameter("receivedFrom");
         String remark = request.getParameter("remark");
         String productUnit = request.getParameter("productUnit");
+        int qty = Integer.parseInt(request.getParameter("qty"));
         Date date = Date.valueOf(request.getParameter("date"));
         User logger = userDAO.getLogger((String) request.getSession().getAttribute("email"));
         String id = request.getParameter("id");
@@ -79,9 +80,17 @@ public class IncomeController extends HttpServlet {
         income.setLogger(logger);
         income.setRemark(remark);
         income.setProductUnit(ProductUnit.valueOf(productUnit));
+        income.setQty(qty);
         if (id.isEmpty()) {
             //save if
             if (incomeDAO.saveIncome(income)) {
+                if(income.getIncomeType().equals(IncomeType.CRUDE_PALM_OIL) && income.getProductUnit().equals(ProductUnit.DRUMS)){
+                    millingProductDAO.sellPalmOilDrum(income.getQty());
+                }  if(income.getIncomeType().equals(IncomeType.CRUDE_PALM_OIL) && income.getProductUnit().equals(ProductUnit.CANS)){
+                    millingProductDAO.sellPalmOilCan(income.getQty());
+                }  if(income.getIncomeType().equals(IncomeType.FIBRE_PALM_OIL) && income.getProductUnit().equals(ProductUnit.CANS)){
+                    millingProductDAO.sellFibreOilCan(income.getQty());
+                }
                 request.setAttribute("message", "income saved Successfully");
             }
         } else {

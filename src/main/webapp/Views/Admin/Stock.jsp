@@ -28,7 +28,7 @@
             <th>SN</th>
             <th>Stock Name</th>
             <th>Quantity</th>
-            <th>Selling Price</th>
+<%--            <th>Selling Price</th>--%>
             <th>Unit</th>
 <%--            <th>Action</th>--%>
 
@@ -37,22 +37,33 @@
         </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>Default</td>
+                <td>Palm Oil</td>
+                <td>${prod.palmOilDrum}</td>
+                <td>Drums</td>
+            </tr>
+                <tr>
+                <td>Default</td>
+                <td>Palm Oil</td>
+                <td>${prod.palmOilCan}</td>
+                <td>Cans</td>
+            </tr>
+                <tr>
+                <td>Default</td>
+                <td>Fibre Oil</td>
+                <td>${prod.fibreOilCan}</td>
+                <td>Cans</td>
+            </tr>
+
 
         <c:forEach items="${list}" var="stock" varStatus="loop">
             <tr>
                 <td>${loop.index+1}</td>
                 <td>${stock.name}</td>
                 <td>${stock.quantity}</td>
-                <td>${stock.sellingPrice}</td>
+<%--                <td>${stock.sellingPrice}</td>--%>
                 <td>${stock.productUnit}</td>
-
-
-<%--                <td>--%>
-<%--                    <a href="${pageContext.request.contextPath}/mills?action=EDIT&id=${mill.id}">Update</a>--%>
-<%--          ]\--%>
-<%--                </td>--%>
-
-
             </tr>
         </c:forEach>
         </tbody>

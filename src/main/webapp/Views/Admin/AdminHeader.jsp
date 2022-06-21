@@ -97,7 +97,7 @@
                         Activity</a>
                     <a href="${pageContext.request.contextPath}/mills" class="nav-sub-link">View Milling Activities</a>
                     <a href="${pageContext.request.contextPath}/mills?action=SELL" class="nav-sub-link">Sell Mill Products</a>
-                    <a href="#" class="nav-sub-link">Analytics</a>
+<%--                    <a href="#" class="nav-sub-link">Analytics</a>--%>
                 </nav>
             </li>
 
@@ -106,14 +106,14 @@
                 <nav class="nav nav-sub">
                     <a href="${pageContext.request.contextPath}/sales" class="nav-sub-link">Income</a>
                     <a href="${pageContext.request.contextPath}/sales?action=NEW" class="nav-sub-link">Make Sales</a>
-                    <a href="#" class="nav-sub-link">Reports</a>
+<%--                    <a href="#" class="nav-sub-link">Reports</a>--%>
                 </nav>
             </li>   <li class="nav-item">
                 <a href="" class="nav-link with-sub"><i data-feather="printer"></i> Stock</a>
                 <nav class="nav nav-sub">
                     <a href="${pageContext.request.contextPath}/stocks" class="nav-sub-link">Stocks</a>
                     <a href="${pageContext.request.contextPath}/stocks?action=NEW" class="nav-sub-link">Add Stock</a>
-                    <a href="#" class="nav-sub-link">Reports</a>
+<%--                    <a href="#" class="nav-sub-link">Reports</a>--%>
                 </nav>
             </li>
             <li class="nav-item">
@@ -122,7 +122,7 @@
                     <a href="${pageContext.request.contextPath}/expenses" class="nav-sub-link">Expenditures</a>
                     <a href="${pageContext.request.contextPath}/expenses?action=NEW" class="nav-sub-link">Create
                         Expenditures</a>
-                    <a href="#" class="nav-sub-link">Reports</a>
+<%--                    <a href="#" class="nav-sub-link">Reports</a>--%>
                     <%--                    <a href="page-505.html" class="nav-sub-link">Forbidden Access</a>--%>
                 </nav>
             </li>
@@ -131,17 +131,9 @@
                 <nav class="nav nav-sub">
                     <a href="#" class="nav-sub-link">All Users</a>
                     <a href="${pageContext.request.contextPath}/admin?action=ADD" class="nav-sub-link">Add Users</a>
-                    <%--                    <a href="page-people.html" class="nav-sub-link">People</a>--%>
-                    <%--                    <a href="page-settings.html" class="nav-sub-link">Profile Settings</a>--%>
+
                 </nav>
-                <%--            </li>--%>
-                <%--            <li class="nav-item">--%>
-                <%--                <a href="" class="nav-link with-sub"><i data-feather="file-text"></i> Extras</a>--%>
-                <%--                <nav class="nav nav-sub">--%>
-                <%--                    <a href="page-invoice.html" class="nav-sub-link">Invoice</a>--%>
-                <%--                    <a href="page-pricing.html" class="nav-sub-link">Pricing</a>--%>
-                <%--                </nav>--%>
-                <%--            </li>--%>
+
         </ul>
 
 

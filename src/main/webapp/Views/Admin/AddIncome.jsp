@@ -27,6 +27,7 @@
                 <select id="incomeType" class=" form-control col-form-select-lg" name="incomeType"
                         placeholder="Select Income Type"
                         data-value="${income.incomeType}" required>
+                    <option value="CRUDE_PALM_OIL" selected>--Select--</option>
                     <option value="CRUDE_PALM_OIL">Crude Palm Oil</option>
                     <option value="FIBRE_PALM_OIL">Fibre Palm Oil</option>
                     <option value="MILLING_CHARGE_PO">Milling Charge PO</option>
@@ -44,6 +45,7 @@
                 <select id="productUnit" class=" form-control col-form-select-lg" name="productUnit"
                         placeholder="Select  product unit"
                         data-value="${income.productUnit}" required>
+                    <option value="CRUDE_PALM_OIL" selected>--Select--</option>
                     <option value="CANS">Cans</option>
                     <option value="DRUMS">Drums</option>
                     <option value="BAGS_50KG">50kg Bags</option>
@@ -53,9 +55,15 @@
                     </option>
                 </select>
             </div>
+
+
         </div>
         <div class="row">
-
+            <div class="col">
+                <label for="qty" class="col-form-label-lg">Quantity</label>
+                <input id="qty" type="number" name="qty" value="${income.qty}"  class="form-control"
+                       required="true"><br>
+            </div>
             <div class="col">
                 <label for="date" class="col-form-label-lg">Date Received</label>
                 <input id="date" type="Date" name="date" value="${income.date}" placeholder="Date" class="form-control"
@@ -63,7 +71,7 @@
             </div>
             <div class="col">
                 <label class="col-form-label-lg" for="logger">Payment Logged By:</label>
-                <input type="text" id="logger" name="logger" value="<%out.print(getUserName());%>"
+                <input type="text" id="logger" name="logger" value="${loggedIn.fullName}"
                        placeholder="logger name" class="form-control" disabled/>
             </div>
         </div>

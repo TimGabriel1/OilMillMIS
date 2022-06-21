@@ -76,7 +76,7 @@ public class DashboardUtil {
 
 
     public Double getProfitMargin() {
-        return (( this.totalIncome - this.totalExpenses)/(this.totalExpenses + this.totalIncome));
+        return (( this.totalIncome - this.totalExpenses)/(this.totalExpenses + this.totalIncome + this.totalHarvestStockCost));
 
     }
 

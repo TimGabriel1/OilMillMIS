@@ -105,7 +105,7 @@
                 <div class="col">
                     <div class="card card-body pd-10 pd-md-15 bd-0 shadow-none bg-pink-light">
                  <h1 class="mg-b-5 tx-sans tx-spacing--2 tx-light tx-pink"><fmt:formatNumber value = "${util.profitMargin}" type = "percent"/></h1>
-                        <p class="tx-13 tx-lg-14 tx-color-03 mg-b-0">Profit Marin</p>
+                        <p class="tx-13 tx-lg-14 tx-color-03 mg-b-0">Profit Margin</p>
                     </div>
                 </div>
             </div><!-- row -->
